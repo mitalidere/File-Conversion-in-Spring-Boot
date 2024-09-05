@@ -14,9 +14,9 @@ public class ProductService {
     ProductRepository productRepository;
 
     List<Product> productList = new ArrayList<>();
-    File CSVFilePath = new File("C:\\Users\\DELL\\IdeaProjects\\BITS Java Training\\assignment_six\\src\\main\\java\\com\\example\\assignment_six\\Products.csv");
 
-    public List<Product> importFromCSV() {
+    public List<Product> importFromCSV(String CSVPath) {
+        File CSVFilePath = new File(CSVPath);
         try(BufferedReader br = new BufferedReader(new FileReader(CSVFilePath))) {
             String line;
             br.readLine();
@@ -25,23 +25,25 @@ public class ProductService {
                 String[] arr = line.split(",");
                 productList.add(new Product(Integer.parseInt(arr[0]), arr[1], Double.parseDouble(arr[2])));
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (IOException e) {
+            throw new RuntimeException("Products not found");
         }
         return productList;
     }
 
-    public String exportToCSV(Product product) {
+    public String exportToCSV(Product product, String CSVPath) {
+        File CSVFilePath = new File(CSVPath);
         System.out.println("\n");
         try (FileWriter fw = new FileWriter(CSVFilePath, true)) {
             fw.append(product.getId() + "," + product.getName() + "," + product.getPrice() + "\n");
         } catch (IOException e) {
-            return "Product not added";
+            throw new RuntimeException("Product not added");
         }
-        return "Product added";
+        return "Product added to CSV";
     }
 
-    public String CSVToDatabase() {
+    public String CSVToDatabase(String CSVPath) {
+        File CSVFilePath = new File(CSVPath);
         try(BufferedReader br = new BufferedReader(new FileReader(CSVFilePath))) {
             String line;
             br.readLine();
@@ -49,14 +51,29 @@ public class ProductService {
                 String[] arr = line.split(",");
                 productRepository.save(new Product(Integer.parseInt(arr[0]), arr[1], Double.parseDouble(arr[2])));
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (IOException e) {
+            throw new RuntimeException("Products not exported");
         }
-        return "Products added to database";
+        return "Products exported from CSV to database";
     }
 
-    public String CSVToXML() {
-        File XMLFilePath = new File("C:\\Users\\DELL\\IdeaProjects\\BITS Java Training\\assignment_six\\src\\main\\java\\com\\example\\assignment_six\\Products.xml");
+    public String DatabaseToCSV(String CSVPath) {
+        List<Product> products = productRepository.findAll();
+        File CSVFilePath = new File(CSVPath);
+        System.out.println("\n");
+        for(Product product: products) {
+            try (FileWriter fw = new FileWriter(CSVFilePath, true)) {
+                fw.append(product.getId() + "," + product.getName() + "," + product.getPrice() + "\n");
+            } catch (IOException e) {
+                throw new RuntimeException("Products not exported");
+            }
+        }
+        return "Products exported from Database to CSV";
+    }
+
+    public String CSVToXML(String CSVPath, String XMLPath) {
+        File CSVFilePath = new File(CSVPath);
+        File XMLFilePath = new File(XMLPath);
         try(BufferedReader br = new BufferedReader(new FileReader(CSVFilePath)); FileWriter fw = new FileWriter(XMLFilePath)) {
             String header=br.readLine();
             if(header==null) {
@@ -76,9 +93,9 @@ public class ProductService {
             }
             fw.write("</Products>\n");
         }
-        catch (Exception e) {
-            System.out.println(e);
+        catch (IOException e) {
+            throw new RuntimeException("Products not exported");
         }
-        return "CSV converted to XML";
+        return "Products exported from CSV to XML";
     }
 }
