@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Products>
+  <Product>
+      <id>1</id>
+      <name>Notebook</name>
+      <price>25.50</price>
+  </Product>
+  <Product>
+      <id>2</id>
+      <name>Pen</name>
+      <price>10.00</price>
+  </Product>
+  <Product>
+      <id>3</id>
+      <name>Pencil</name>
+      <price>5.00</price>
+  </Product>
+  <Product>
+      <id>4</id>
+      <name>Eraser</name>
+      <price>3.00</price>
+  </Product>
+  <Product>
+      <id>5</id>
+      <name>Sharpener</name>
+      <price>7.50</price>
+  </Product>
+  <Product>
+      <id>6</id>
+      <name>Ruler</name>
+      <price>15.00</price>
+  </Product>
+  <Product>
+      <id>7</id>
+      <name>Marker</name>
+      <price>20.00</price>
+  </Product>
+  <Product>
+      <id>8</id>
+      <name>Highlighter</name>
+      <price>30.00</price>
+  </Product>
+  <Product>
+      <id>9</id>
+      <name>Glue Stick</name>
+      <price>12.00</price>
+  </Product>
+  <Product>
+      <id>10</id>
+      <name>Stapler</name>
+      <price>150.00</price>
+  </Product>
+  <Product>
+      <id>11</id>
+      <name>Scissors</name>
+      <price>100.00</price>
+  </Product>
+  <Product>
+      <id>12</id>
+      <name>Paper Clips Pack</name>
+      <price>50.00</price>
+  </Product>
+  <Product>
+      <id>13</id>
+      <name>Sticky Notes</name>
+      <price>20.00</price>
+  </Product>
+  <Product>
+      <id>14</id>
+      <name>File Folder</name>
+      <price>40.00</price>
+  </Product>
+  <Product>
+      <id>15</id>
+      <name>Calculator</name>
+      <price>200.00</price>
+  </Product>
+  <Product>
+      <id>16</id>
+      <name>Whiteboard Marker</name>
+      <price>35.00</price>
+  </Product>
+  <Product>
+      <id>17</id>
+      <name>Correction Tape</name>
+      <price>18.00</price>
+  </Product>
+  <Product>
+      <id>18</id>
+      <name>Binder Clip</name>
+      <price>8.00</price>
+  </Product>
+  <Product>
+      <id>19</id>
+      <name>Desk Organizer</name>
+      <price>180.00</price>
+  </Product>
+  <Product>
+      <id>20</id>
+      <name>Writing Pad</name>
+      <price>60.00</price>
+  </Product>
+  <Product>
+      <id>21</id>
+      <name>Envelope Pack</name>
+      <price>10.0</price>
+  </Product>
+</Products>
